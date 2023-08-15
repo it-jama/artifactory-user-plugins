@@ -24,7 +24,7 @@ import org.artifactory.security.groups.LdapGroupsSettings
  */
 
 realms {
-    myrealm([autoCreateUsers: false, realmPolicy: RealmPolicy.ADDITIVE]) {
+    myrealm([autoCreateUsers: true, realmPolicy: RealmPolicy.ADDITIVE, log.debug "user " + username+" have the following groups "+ groups]) {
         authenticate { username, credentials ->
             // Common special or internal users can be skipped
             if (username in ['anonymous', '_internal', 'xray', 'access-admin', 'admin', 'jffe@000']
